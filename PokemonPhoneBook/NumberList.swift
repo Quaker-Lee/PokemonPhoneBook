@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ViewController: UIViewController {
+class NumberList: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
