@@ -9,54 +9,32 @@ import UIKit
 import SnapKit
 import Then
 
-class NumberList: UIViewController /*, UITableViewDataSource, UITableViewDelegate*/ {
-    
-//    private let friendsList: UITableView = UITableView().then {
-//        $0.rowHeight = 80
-//        $0.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
-//    }
-    
-
-    private let topLabel: UILabel = UILabel().then {
-        $0.text = "친구 목록"
-        $0.textColor = .black
-        $0.font = UIFont.boldSystemFont(ofSize: 20)
-        $0.textAlignment = .center
-    }
-    
-    private lazy var addButton: UIButton = UIButton().then {
-        $0.setTitle("추가", for: .normal)
-        $0.setTitleColor(.blue, for: .normal)
-        $0.backgroundColor = .lightGray
-        $0.addTarget(self, action: #selector(buttonTapped), for: .touchDown)
-    }
+class NumberList: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        navigationBar()
     }
     
+    //MARK: UI를 구현하는 함수
     private func configureUI() {
         view.backgroundColor = .white
-        
-        view.addSubview(topLabel)
-        topLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalTo(70)
-        }
-        
-        view.addSubview(addButton)
-        addButton.snp.makeConstraints {
-            $0.trailing.equalTo(-15)
-            $0.top.equalTo(70)
-        }
     }
     
-    @objc
-    private func buttonTapped() {
-        self.navigationController?.pushViewController(AddNumber(), animated: true)
+    //MARK: 네비게이션 바를 생성하는 함수
+    private func navigationBar() {
+        self.navigationItem.title = "친구 목록"
+        
+        let addButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addBtnTapped))
+        self.navigationItem.rightBarButtonItem = addButton
     }
 
+  
+    @objc // 버튼을 누르면 연락처를 추가하는 페이지(AddNumber)로 넘어가는 함수
+    private func addBtnTapped() {
+        self.navigationController?.pushViewController(AddNumber(), animated: true)
+    }
 }
 

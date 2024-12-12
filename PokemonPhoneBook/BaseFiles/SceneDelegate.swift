@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
                 
-        //window에게 루트 뷰 컨트롤러 지정.
-        window.rootViewController = UINavigationController(rootViewController: AddNumber())
+        //window에게 루트 뷰 컨트롤러 지정. 현재는 NumberList가 최초로 보여지는 뷰임.
+        window.rootViewController = UINavigationController(rootViewController: NumberList())
         //이 메서드를 반드시 작성해줘야만 윈도우가 활성화 됨
         window.makeKeyAndVisible()
                 
