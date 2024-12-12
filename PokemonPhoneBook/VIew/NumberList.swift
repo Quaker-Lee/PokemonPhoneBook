@@ -9,7 +9,13 @@ import UIKit
 import SnapKit
 import Then
 
-class NumberList: UIViewController {
+class NumberList: UIViewController /*, UITableViewDataSource, UITableViewDelegate*/ {
+    
+//    private let friendsList: UITableView = UITableView().then {
+//        $0.rowHeight = 80
+//        $0.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
+//    }
+    
 
     private let topLabel: UILabel = UILabel().then {
         $0.text = "친구 목록"
@@ -21,7 +27,7 @@ class NumberList: UIViewController {
     private lazy var addButton: UIButton = UIButton().then {
         $0.setTitle("추가", for: .normal)
         $0.setTitleColor(.blue, for: .normal)
-        $0.backgroundColor = .gray
+        $0.backgroundColor = .lightGray
         $0.addTarget(self, action: #selector(buttonTapped), for: .touchDown)
     }
     
@@ -43,7 +49,7 @@ class NumberList: UIViewController {
         view.addSubview(addButton)
         addButton.snp.makeConstraints {
             $0.trailing.equalTo(-15)
-            $0.top.equalTo(80)
+            $0.top.equalTo(70)
         }
     }
     
